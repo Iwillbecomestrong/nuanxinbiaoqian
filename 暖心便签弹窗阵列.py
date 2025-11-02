@@ -25,6 +25,29 @@ import tkinter as tk
 from tkinter import font as tkfont
 
 
+# 开启更“疗愈”的文案风格（不改变条目数量，仅对部分表述做柔化替换）
+HEALING_MODE = True
+
+HEALING_REWRITE_MAP = {
+    # 中文柔化
+    "困难只是暂时的，坚持就是胜利": "允许自己慢下来，给心一点空间",
+    "保持初心，方得始终": "接纳此刻的自己，已经很好",
+    "热爱生活，生活也会热爱你": "温柔以待自己，生活也会柔软",
+    "你的努力，时间都看得见": "不必用力过猛，休息也是前进",
+    "别怕慢，只怕站": "慢一点也没关系，轻轻走就好",
+    "每一步都算数，每一天都重要": "此刻的呼吸也很重要",
+    "健康快乐，就是最大的成功": "平安顺心，就是最大的满足",
+    "休息好了，才能更好地前行": "允许自己好好休息",
+    "爱家人，爱朋友，爱自己": "先爱自己，然后温柔拥抱世界",
+    # 英文柔化
+    "Love yourself fiercely": "Be tender with yourself today",
+    "You are worthy of all good things": "You deserve rest and gentle days",
+    "Take a deep breath, you're doing fine": "Slow down and breathe; you are held",
+    "Embrace your imperfections": "You don't have to be perfect to be loved",
+    "You are stronger than you realize": "It's okay to be soft and gentle",
+    "You are a gift to this world": "You are safe and cared for",
+}
+
 WARM_MESSAGES = [
     # 中文 - 毛泽东相关 (13个)
     "好好学习，天天向上",
@@ -40,7 +63,7 @@ WARM_MESSAGES = [
     "敢于斗争，敢于胜利",
     "谦虚谨慎，戒骄戒躁",
     "理论联系实际",
-    # 中文 - 其他关心体贴话 (37个)
+    # 中文 - 其他关心体贴话 (62个)
     "记得多喝水，照顾好自己",
     "今天也要开心哦",
     "爱自己，从小事做起",
@@ -79,7 +102,31 @@ WARM_MESSAGES = [
     "心灵的花园，需要细心浇灌",
     "温暖的家，是心灵的归宿",
     "朋友的问候，是生活中的甜蜜",
-    # 英文 - 关心体贴话 (50个)
+    "相信自己，你比想象中更强大",
+    "慢慢来，一切都来得及",
+    "给生活一个微笑，它会回你整个世界",
+    "勇敢做自己，不必取悦所有人",
+    "困难只是暂时的，坚持就是胜利",
+    "每个人都是独一无二的星辰",
+    "善待自己，你是最珍贵的人",
+    "生活再难，也要保持乐观",
+    "家的温暖，胜过千万风景",
+    "陪伴是最长情的告白",
+    "用心感受生活的美好瞬间",
+    "珍惜眼前人，把握当下事",
+    "休息不是浪费，是为了走更远的路",
+    "你的努力，时间都看得见",
+    "保持初心，方得始终",
+    "热爱生活，生活也会热爱你",
+    "慢慢变好，是给自己最好的礼物",
+    "心怀感恩，幸福常在",
+    "温柔对待世界，世界温柔相待",
+    "别怕慢，只怕站",
+    "每一步都算数，每一天都重要",
+    "照顾好自己，才能照顾好他人",
+    "学会放下，才能轻装前行",
+    "向着阳光，温暖前行",
+    # 英文 - 关心体贴话 (75个)
     "Take good care of yourself today",
     "You are loved more than you know",
     "Rest when you need to, it's okay",
@@ -130,9 +177,37 @@ WARM_MESSAGES = [
     "Your heart deserves tenderness",
     "Love yourself, always",
     "You are perfectly imperfect",
-    "Cherish your inner peace"
+    "Cherish your inner peace",
+    "You matter more than you know",
+    "Be patient with your journey",
+    "Your story is worth telling",
+    "Trust the timing of your life",
+    "You are blooming beautifully",
+    "Embrace your authentic self",
+    "Your efforts are never wasted",
+    "Give yourself grace today",
+    "You are brave beyond measure",
+    "Celebrate your small victories",
+    "Your presence is a blessing",
+    "Be proud of how far you've come",
+    "You deserve to be happy",
+    "Listen to your inner wisdom",
+    "Your light shines bright",
+    "Take care of your precious heart",
+    "You are valued and appreciated",
+    "Honor your feelings and needs",
+    "Your journey is uniquely yours",
+    "You are creating something beautiful",
+    "Trust yourself more",
+    "Your soul needs gentleness",
+    "You are worthy of love and joy",
+    "Breathe deeply, you are safe"
 ]
 FINAL_MESSAGE = "Happy birthday to you!"
+
+# 如开启疗愈风格，对文案进行一对一柔化替换（不改变总量与唯一性）
+if HEALING_MODE:
+    WARM_MESSAGES = [HEALING_REWRITE_MAP.get(m, m) for m in WARM_MESSAGES]
 
 def pastel_color():
     # generate a soft pastel color
